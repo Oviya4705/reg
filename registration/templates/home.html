@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration System</title>
+
+    <link rel="stylesheet" href="{% static 'registration/style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Registration System</h1>
+
+        <p class="subtitle">
+            Welcome! Please choose an option to continue.
+        </p>
+
+
+        <!-- NEW USER -->
+
+        <div class="home-option">
+
+            <h2>🆕 New User</h2>
+
+            <p>
+                Create a new account by completing the registration form.
+            </p>
+
+            <a href="/register/" class="home-button">
+                Register
+            </a>
+
+        </div>
+
+
+        <!-- EXISTING USER -->
+
+        <div class="home-option">
+
+            <h2>🔐 Existing User</h2>
+
+            <p>
+                Already registered? Login to access your account.
+            </p>
+
+            <a href="/login/" class="home-button">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        Registration System
+    </footer>
+
+</body>
+
+</html>

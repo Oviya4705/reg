@@ -1,0 +1,454 @@
+/* ======================================================
+   GENERAL
+   ====================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0f;
+    color: white;
+}
+
+
+/* ======================================================
+   REGISTRATION CONTAINER
+   ====================================================== */
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #15151d;
+    border: 1px solid #7b2cff;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(123, 44, 255, 0.25);
+}
+
+h1 {
+    text-align: center;
+    color: #b875ff;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin: 0 auto 30px auto;
+    width: 100%;
+}
+
+
+/* ======================================================
+   FORM LABELS
+   ====================================================== */
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+
+/* ======================================================
+   INPUTS
+   ====================================================== */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 7px;
+    background: #20202a;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #888;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #9b4dff;
+    box-shadow: 0 0 8px rgba(155, 77, 255, 0.3);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+select[multiple] {
+    height: 130px;
+}
+
+small {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+
+/* ======================================================
+   RADIO BUTTONS
+   ====================================================== */
+
+.radio-group {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.radio-group label {
+    margin: 0;
+    font-weight: normal;
+}
+
+.radio-group input {
+    width: auto;
+    margin-right: 6px;
+}
+
+
+/* ======================================================
+   CHECKBOXES
+   ====================================================== */
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-weight: normal;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-right: 6px;
+}
+
+
+/* ======================================================
+   EXPERIENCE RANGE
+   ====================================================== */
+
+.range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-container input {
+    flex: 1;
+}
+
+#experienceValue {
+    min-width: 25px;
+    text-align: center;
+    color: #b875ff;
+    font-weight: bold;
+}
+
+
+/* ======================================================
+   FILE INPUT
+   ====================================================== */
+
+input[type="file"] {
+    padding: 10px;
+}
+
+
+/* ======================================================
+   REGISTER BUTTON
+   ====================================================== */
+
+button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #7b2cff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #9b4dff;
+    transform: translateY(-2px);
+}
+
+
+/* ======================================================
+   FOOTER
+   ====================================================== */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   REGISTRATION SUCCESS POPUP
+   ====================================================== */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.80);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+}
+
+
+/* ======================================================
+   POPUP BOX
+   ====================================================== */
+
+.popup-box {
+    width: 90%;
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #15151d;
+
+    border: 2px solid #9b4dff;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 0 20px rgba(123, 44, 255, 0.5),
+        0 0 50px rgba(123, 44, 255, 0.2);
+
+    animation: popupAppear 0.3s ease;
+}
+
+
+/* ======================================================
+   POPUP ANIMATION
+   ====================================================== */
+
+@keyframes popupAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ======================================================
+   POPUP HEADER
+   ====================================================== */
+
+.popup-header {
+    text-align: center;
+
+    border-bottom: 1px solid #333;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 20px;
+}
+
+.popup-header h2 {
+    margin: 0;
+
+    color: #d19aff;
+
+    font-size: 25px;
+}
+
+.popup-header p {
+    margin-top: 8px;
+
+    color: #aaa;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   POPUP SECTIONS
+   ====================================================== */
+
+.popup-section {
+    margin-bottom: 20px;
+
+    padding: 18px;
+
+    background: #1d1d27;
+
+    border: 1px solid #333;
+
+    border-radius: 12px;
+}
+
+.popup-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    color: #b875ff;
+
+    font-size: 18px;
+
+    border-bottom: 1px solid #3a3a45;
+
+    padding-bottom: 8px;
+}
+
+
+/* ======================================================
+   POPUP DETAILS
+   ====================================================== */
+
+.popup-detail {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 9px 0;
+
+    border-bottom: 1px solid #292934;
+
+    font-size: 14px;
+}
+
+.popup-detail:last-child {
+    border-bottom: none;
+}
+
+.popup-detail strong {
+    color: #c98aff;
+
+    min-width: 150px;
+}
+
+.popup-detail span {
+    color: #eee;
+
+    text-align: right;
+
+    word-break: break-word;
+}
+
+
+/* ======================================================
+   POPUP CLOSE / CONTINUE BUTTON
+   ====================================================== */
+
+.popup-close-btn {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #7b2cff;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.popup-close-btn:hover {
+    background: #9b4dff;
+
+    transform: translateY(-2px);
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .popup-box {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .popup-detail {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .popup-detail strong {
+        min-width: auto;
+    }
+
+    .popup-detail span {
+        text-align: left;
+    }
+}

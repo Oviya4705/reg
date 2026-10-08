@@ -1,0 +1,666 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'registration/style.css' %}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My Profile</h1>
+
+        <p class="subtitle">
+            View and update your registered details
+        </p>
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        {% if success %}
+
+        <div
+            style="
+                background: #183d20;
+                color: #7cff91;
+                padding: 12px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                text-align: center;
+            "
+        >
+            {{ success }}
+        </div>
+
+        {% endif %}
+
+
+        <!-- ERROR MESSAGE -->
+
+        {% if errors %}
+
+        <div
+            style="
+                background: #421818;
+                color: #ff8a8a;
+                padding: 12px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            "
+        >
+
+            <strong>
+                Please correct the following:
+            </strong>
+
+            <br><br>
+
+            {{ errors }}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- PROFILE FORM -->
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- ==================================================
+                 PERSONAL DETAILS
+                 ================================================== -->
+
+            <h2>Personal Details</h2>
+
+
+            <!-- NAME -->
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ registration.name }}"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <!-- EMAIL -->
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="{{ registration.email }}"
+                placeholder="Enter your email address"
+                required
+            >
+
+
+            <!-- PHONE -->
+
+            <label for="phone_number">
+                Phone Number
+            </label>
+
+            <input
+                type="text"
+                id="phone_number"
+                name="phone_number"
+                value="{{ registration.phone_number }}"
+                placeholder="Enter your phone number"
+                required
+            >
+
+
+            <!-- ADDRESS -->
+
+            <label for="address">
+                Address
+            </label>
+
+            <textarea
+                id="address"
+                name="address"
+                placeholder="Enter your complete address"
+                required
+            >{{ registration.address }}</textarea>
+
+
+            <!-- DOB -->
+
+            <label for="dob">
+                Date of Birth
+            </label>
+
+            <input
+                type="date"
+                id="dob"
+                name="dob"
+                value="{{ registration.dob|date:'Y-m-d' }}"
+                required
+            >
+
+
+            <!-- WEBSITE -->
+
+            <label for="website">
+                Website
+            </label>
+
+            <input
+                type="url"
+                id="website"
+                name="website"
+                value="{{ registration.website }}"
+                placeholder="https://example.com"
+                required
+            >
+
+
+            <!-- ==================================================
+                 OTHER DETAILS
+                 ================================================== -->
+
+            <h2
+                style="
+                    margin-top: 35px;
+                "
+            >
+                Other Details
+            </h2>
+
+
+            <!-- STATE -->
+
+            <label for="state">
+                State
+            </label>
+
+            <select
+                id="state"
+                name="state"
+                required
+            >
+
+                <option value="">
+                    Select your state
+                </option>
+
+                <option
+                    value="Tamil Nadu"
+                    {% if registration.state == "Tamil Nadu" %}selected{% endif %}
+                >
+                    Tamil Nadu
+                </option>
+
+                <option
+                    value="Kerala"
+                    {% if registration.state == "Kerala" %}selected{% endif %}
+                >
+                    Kerala
+                </option>
+
+                <option
+                    value="Karnataka"
+                    {% if registration.state == "Karnataka" %}selected{% endif %}
+                >
+                    Karnataka
+                </option>
+
+                <option
+                    value="Andhra Pradesh"
+                    {% if registration.state == "Andhra Pradesh" %}selected{% endif %}
+                >
+                    Andhra Pradesh
+                </option>
+
+                <option
+                    value="Telangana"
+                    {% if registration.state == "Telangana" %}selected{% endif %}
+                >
+                    Telangana
+                </option>
+
+                <option
+                    value="Maharashtra"
+                    {% if registration.state == "Maharashtra" %}selected{% endif %}
+                >
+                    Maharashtra
+                </option>
+
+                <option
+                    value="Delhi"
+                    {% if registration.state == "Delhi" %}selected{% endif %}
+                >
+                    Delhi
+                </option>
+
+                <option
+                    value="Other"
+                    {% if registration.state == "Other" %}selected{% endif %}
+                >
+                    Other
+                </option>
+
+            </select>
+
+
+            <!-- LANGUAGES -->
+
+            <label for="languages">
+                Languages
+            </label>
+
+            <input
+                type="text"
+                id="languages"
+                name="languages"
+                value="{{ registration.languages }}"
+                placeholder="Example: English, Tamil"
+                required
+            >
+
+
+            <!-- GENDER -->
+
+            <label for="gender">
+                Gender
+            </label>
+
+            <select
+                id="gender"
+                name="gender"
+                required
+            >
+
+                <option value="">
+                    Select gender
+                </option>
+
+                <option
+                    value="Male"
+                    {% if registration.gender == "Male" %}selected{% endif %}
+                >
+                    Male
+                </option>
+
+                <option
+                    value="Female"
+                    {% if registration.gender == "Female" %}selected{% endif %}
+                >
+                    Female
+                </option>
+
+                <option
+                    value="Other"
+                    {% if registration.gender == "Other" %}selected{% endif %}
+                >
+                    Other
+                </option>
+
+            </select>
+
+
+            <!-- SKILLS -->
+
+            <label for="skills">
+                Skills
+            </label>
+
+            <input
+                type="text"
+                id="skills"
+                name="skills"
+                value="{{ registration.skills }}"
+                placeholder="Example: Java, Python, SQL"
+                required
+            >
+
+
+            <!-- EXPERIENCE -->
+
+            <label for="experience">
+                Experience
+            </label>
+
+            <input
+                type="number"
+                id="experience"
+                name="experience"
+                value="{{ registration.experience }}"
+                min="0"
+                max="50"
+                required
+            >
+
+
+            <!-- ==================================================
+                 PASSWORD
+                 ================================================== -->
+
+            <h2
+                style="
+                    margin-top: 35px;
+                "
+            >
+                Change Password
+            </h2>
+
+            <p
+                style="
+                    color: #aaa;
+                    font-size: 14px;
+                "
+            >
+                Leave this empty if you don't want to change your password.
+            </p>
+
+            <label for="password">
+                New Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter new password"
+                minlength="8"
+            >
+
+
+            <!-- ==================================================
+                 FILES
+                 ================================================== -->
+
+            <h2
+                style="
+                    margin-top: 35px;
+                "
+            >
+                Uploaded Files
+            </h2>
+
+
+            <!-- PHOTO -->
+
+            <label for="photo">
+                Profile Photo
+            </label>
+
+            {% if registration.photo %}
+
+                <div
+                    style="
+                        margin-bottom: 15px;
+                        text-align: center;
+                    "
+                >
+
+                    <img
+                        src="{{ registration.photo.url }}"
+                        alt="Profile Photo"
+                        style="
+                            width: 130px;
+                            height: 130px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            border: 2px solid #8b2cff;
+                        "
+                    >
+
+                    <p
+                        style="
+                            color: #aaa;
+                            font-size: 14px;
+                        "
+                    >
+                        Current profile photo
+                    </p>
+
+                </div>
+
+            {% else %}
+
+                <p
+                    style="
+                        color: #aaa;
+                    "
+                >
+                    No profile photo uploaded.
+                </p>
+
+            {% endif %}
+
+
+            <input
+                type="file"
+                id="photo"
+                name="photo"
+                accept="image/jpeg,image/png,image/webp"
+            >
+
+            <small>
+                Select a new photo only if you want to replace the current one.
+            </small>
+
+
+            <!-- RESUME -->
+
+            <label for="resume">
+                Resume
+            </label>
+
+            {% if registration.resume %}
+
+                <p>
+
+                    <a
+                        href="{{ registration.resume.url }}"
+                        target="_blank"
+                        style="
+                            color: #b875ff;
+                        "
+                    >
+                        📄 View Current Resume
+                    </a>
+
+                </p>
+
+            {% else %}
+
+                <p
+                    style="
+                        color: #aaa;
+                    "
+                >
+                    No resume uploaded.
+                </p>
+
+            {% endif %}
+
+
+            <input
+                type="file"
+                id="resume"
+                name="resume"
+                accept=".pdf,application/pdf"
+            >
+
+            <small>
+                Select a new PDF only if you want to replace the current resume.
+            </small>
+
+
+            <!-- AUDIO -->
+
+            <label for="audio">
+                Audio
+            </label>
+
+            {% if registration.audio %}
+
+                <audio
+                    controls
+                    style="
+                        width: 100%;
+                        margin-bottom: 10px;
+                    "
+                >
+
+                    <source
+                        src="{{ registration.audio.url }}"
+                    >
+
+                    Your browser does not support audio.
+
+                </audio>
+
+            {% else %}
+
+                <p
+                    style="
+                        color: #aaa;
+                    "
+                >
+                    No audio uploaded.
+                </p>
+
+            {% endif %}
+
+
+            <input
+                type="file"
+                id="audio"
+                name="audio"
+                accept="audio/*"
+            >
+
+            <small>
+                Select a new audio file only if you want to replace it.
+            </small>
+
+
+            <!-- VIDEO -->
+
+            <label for="video">
+                Video
+            </label>
+
+            {% if registration.video %}
+
+                <video
+                    controls
+                    style="
+                        width: 100%;
+                        max-height: 300px;
+                        margin-bottom: 10px;
+                        border-radius: 10px;
+                    "
+                >
+
+                    <source
+                        src="{{ registration.video.url }}"
+                    >
+
+                    Your browser does not support video.
+
+                </video>
+
+            {% else %}
+
+                <p
+                    style="
+                        color: #aaa;
+                    "
+                >
+                    No video uploaded.
+                </p>
+
+            {% endif %}
+
+
+            <input
+                type="file"
+                id="video"
+                name="video"
+                accept="video/*"
+            >
+
+            <small>
+                Select a new video file only if you want to replace it.
+            </small>
+
+
+            <!-- ==================================================
+                 SAVE
+                 ================================================== -->
+
+            <button
+                type="submit"
+                style="
+                    margin-top: 30px;
+                "
+            >
+                Save Changes
+            </button>
+
+        </form>
+
+
+        <!-- LOGOUT -->
+
+        <a
+            href="/logout/"
+            style="
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+                color: #b875ff;
+                text-decoration: none;
+            "
+        >
+            Logout
+        </a>
+
+    </div>
+
+
+    <footer>
+        Registration System
+    </footer>
+
+</body>
+
+</html>
